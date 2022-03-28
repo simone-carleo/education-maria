@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesReader {
+
     private final Properties properties;
 
     public PropertiesReader(String propertyFileName) throws IOException {
@@ -18,4 +19,6 @@ public class PropertiesReader {
     public String getProperty(String propertyName){
         return this.properties.getProperty(propertyName);
     }
+
+
 }
