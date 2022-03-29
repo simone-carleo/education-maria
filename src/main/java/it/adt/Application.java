@@ -2,7 +2,10 @@ package it.adt;
 
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
@@ -13,15 +16,13 @@ import java.util.logging.Logger;
  * Hello world!
  *
  */
-
-public class App {
+@SpringBootApplication
+public class Application {
    // private final static String nameCost = "Pippo";
 
-    public static void main( String[] args ) {
+    public static void main(String[] args ) {
        // PropertiesReader reader = new PropertiesReader("test.properties");
        // String property = reader.getProperty("name");
-
-
         //if(StringUtils.equals(nameCost, property)){
         //    System.out.println("Le stringhe sono uguali");
        // }else{
@@ -29,11 +30,15 @@ public class App {
        // }
         //System.out.println( "Maven test!" );
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Comparison comparison = context.getBean(Comparison.class);
+        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
 
+        //ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Comparison comparison = context.getBean(Comparison.class);
         comparison.compareString();
     }
+
+
+
 
 
 }
