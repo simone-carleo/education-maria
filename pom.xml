@@ -8,6 +8,12 @@
   <name>mvn-test-project</name>
   <url>http://maven.apache.org</url>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.5</version>
+    </parent>
+
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -59,6 +65,10 @@
           <artifactId>log4j-core</artifactId>
           <version>2.6.2</version>
       </dependency>
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-web</artifactId>
+      </dependency>
   </dependencies>
 
  <build>
@@ -80,6 +90,10 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
