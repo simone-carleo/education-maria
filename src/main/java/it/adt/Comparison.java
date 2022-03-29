@@ -29,10 +29,10 @@ public class Comparison {
             if (StringUtils.equals(nameCost, property)) {
                 logger.info("Le stringhe sono uguali");
             } else {
-                logger.info("Le stringhe sono differenti");
+                logger.info("Le stringhe nameCost {} e property {} sono differenti", nameCost, property);
             }
         }catch(IOException e){
-            logger.error("Exception Thrown: " + e);
+            logger.error("Exception Thrown: " , e);
         }
     }
 }
