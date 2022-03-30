@@ -5,7 +5,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
@@ -30,8 +29,7 @@ public class Application {
        // }
         //System.out.println( "Maven test!" );
 
-        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-
+        ApplicationContext context = SpringApplication.run(Application.class, args);
         //ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         Comparison comparison = context.getBean(Comparison.class);
         comparison.compareString();
