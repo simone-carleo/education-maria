@@ -13,7 +13,7 @@ import java.io.IOException;
 @PropertySource(value="test.properties")
 public class Comparison {
     final static Logger logger = LogManager.getLogger(Comparison.class.getName());
-    private static String nameCost = "Pippo";
+    private static String nameCost = "Pino";
    // private String nameCost;
     @Value("${name}")
     private String name;
@@ -27,7 +27,6 @@ public class Comparison {
     public String getName() {
         return name;
     }
-
 
     public void compareString()  {
         //try{
