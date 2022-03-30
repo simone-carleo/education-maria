@@ -1,0 +1,7 @@
+logging:
+  level:
+    it.adt.comparison: INFO
+    it.adt.comparison.service: WARN
+
+my-properties:
+  name: Pino
