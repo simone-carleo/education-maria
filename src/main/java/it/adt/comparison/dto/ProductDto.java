@@ -1,27 +1,15 @@
 package it.adt.comparison.dto;
 
-public class Product {
+public class ProductDto {
 
-    private int id;
     private String name;
     private String description;
     private double price;
 
-    public Product(){}
-
-    public Product(int id, String name, String description, double price) {
-        this.id = id;
+    public ProductDto(String name, String description, double price) {
         this.name = name;
         this.description = description;
         this.price = price;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

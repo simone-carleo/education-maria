@@ -4,18 +4,15 @@ package it.adt.comparison.controller;
 import it.adt.comparison.User;
 import it.adt.comparison.dto.UserDto;
 import it.adt.comparison.dto.UserNameDto;
-import it.adt.comparison.repository.UserRepository;
+import it.adt.comparison.service.IUserService;
 import it.adt.comparison.service.UserService;
-import org.h2.util.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -23,25 +20,22 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private IUserService iUserService;
 
-    @Autowired
-    private UserRepository userRepository;
-
+    /*
     @PostMapping(value = "/user", produces = {MediaType.APPLICATION_JSON_VALUE})
     public User create(@RequestBody UserDto userDto){
         return this.userService.create(userDto);
     }
 
     @GetMapping(value = "/user/find-all-users", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<User> getUsers(){
-        List <User> users = userRepository.findAll();
-        return users;
+    public Iterable<User> getUsers(){
+        return this.userService.getAllUsers();
     }
 
     @GetMapping(value = "/user/{email}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public User getUserByEmail(@PathVariable(value = "email", required = true) String email){
-        return this.userRepository.findByEmail(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return this.userService.getByEmail(email);
     }
 
 
@@ -56,5 +50,31 @@ public class UserController {
         return this.userService.updateUser(email, userDto);
 
     }
+*/
 
+    @PostMapping(value = "/user", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public void create(@RequestBody UserDto userDto){
+        System.out.println("null");
+    }
+
+    @GetMapping(value = "/user/find-all-users", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public void getUsers(){
+        List<User> users = new ArrayList();
+        System.out.println(users);
+    }
+
+    @GetMapping(value = "/user/{email}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public void getByEmail(@PathVariable(value = "email", required = true) String email){
+        System.out.println("null");
+    }
+
+    @PatchMapping(value = "/user/{email}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public void updateNameOfUserIdentifiedByEmail(@PathVariable(value ="email", required = true) String email,@RequestBody UserNameDto userNameDto){
+        System.out.println("null");
+    }
+
+    @PutMapping(value = "/user/{email}",produces = {MediaType.APPLICATION_JSON_VALUE})
+    public void updateUser(@PathVariable(value = "email", required = true) String email, @RequestBody UserDto userDto){
+        System.out.println("null");
+    }
 }
