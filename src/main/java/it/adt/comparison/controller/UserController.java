@@ -7,7 +7,6 @@ import it.adt.comparison.dto.UserNameDto;
 import it.adt.comparison.service.IUserService;
 import it.adt.comparison.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
