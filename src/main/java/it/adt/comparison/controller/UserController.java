@@ -7,6 +7,7 @@ import it.adt.comparison.dto.UserNameDto;
 import it.adt.comparison.service.IUserService;
 import it.adt.comparison.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class UserController {
     @Autowired
     private IUserService iUserService;
 
-    /*
+/*
     @PostMapping(value = "/user", produces = {MediaType.APPLICATION_JSON_VALUE})
     public User create(@RequestBody UserDto userDto){
         return this.userService.create(userDto);
