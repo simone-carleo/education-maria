@@ -1,9 +1,7 @@
 package it.adt.comparison;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Purchase {
@@ -15,6 +13,17 @@ public class Purchase {
     private String lastName;
     private String productName;
     private double productPrice;
+
+    @Column(name = "purchase_price",nullable = false)
+    private double purchasePrice;
+    @Column(name = "purchase_date",nullable = false)
+    private Date purchaseDate;
+    @Column(name = "receipt_code", nullable = false)
+    private String receiptCode;
+
+    @ManyToOne
+    @JoinColumn(name = "id_user", nullable = false)
+    private User user;
 
     public Purchase(){}
 
