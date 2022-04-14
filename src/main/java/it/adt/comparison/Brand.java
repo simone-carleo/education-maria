@@ -1,10 +1,12 @@
 package it.adt.comparison;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "product brand")
+@Table(name = "product_brand")
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +17,8 @@ public class Brand {
     private String brandDescription;
 
     @OneToMany(mappedBy = "brand")
-    private Set<Product> products;
+    @JsonManagedReference
+    private List<Product> products;
 
     public Brand(){}
 
@@ -47,5 +50,13 @@ public class Brand {
 
     public void setBrandDescription(String brandDescription) {
         this.brandDescription = brandDescription;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

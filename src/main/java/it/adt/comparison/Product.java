@@ -1,5 +1,7 @@
 package it.adt.comparison;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +18,8 @@ public class Product {
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "id_brand", nullable = false)
+    @JoinColumn(name = "id_brand", nullable = false, referencedColumnName = "id_brand")
+    @JsonBackReference
     private Brand brand;
 
     public Product(){}

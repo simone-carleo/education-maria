@@ -5,11 +5,13 @@ public class ProductDto {
     private String name;
     private String description;
     private double price;
+    private int id_brand;
 
-    public ProductDto(String name, String description, double price) {
+    public ProductDto(String name, String description, double price, int id_brand) {
         this.name = name;
         this.description = description;
         this.price = price;
+        this.id_brand = id_brand;
     }
 
     public String getName() {
@@ -36,4 +38,11 @@ public class ProductDto {
         this.price = price;
     }
 
+    public int getId_brand() {
+        return id_brand;
+    }
+
+    public void setId_brand(int id_brand) {
+        this.id_brand = id_brand;
+    }
 }
