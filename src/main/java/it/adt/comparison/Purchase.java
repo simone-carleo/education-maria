@@ -75,4 +75,35 @@ public class Purchase {
         this.productPrice = productPrice;
     }
 
+    public double getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(double purchasePrice) {
+        this.purchasePrice = purchasePrice;
+    }
+
+    public Date getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public String getReceiptCode() {
+        return receiptCode;
+    }
+
+    public void setReceiptCode(String receiptCode) {
+        this.receiptCode = receiptCode;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
