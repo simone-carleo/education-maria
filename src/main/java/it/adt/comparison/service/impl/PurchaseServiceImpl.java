@@ -1,27 +1,19 @@
 package it.adt.comparison.service.impl;
 
 
-import com.querydsl.jpa.impl.JPAQuery;
 import it.adt.comparison.Purchase;
-import it.adt.comparison.QPurchase;
 import it.adt.comparison.dto.PurchaseDto;
+import it.adt.comparison.filter.PurchaseRecordFilter;
 import it.adt.comparison.repository.PurchaseRepository;
 import it.adt.comparison.repository.UserRepository;
 import it.adt.comparison.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
-
-    @PersistenceContext
-    EntityManager em;
-
-    public static QPurchase qPurchase = QPurchase.purchase;
 
     @Autowired
     private PurchaseRepository purchaseRepository;
@@ -44,7 +36,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 
     public List<Purchase> getFilteredList(String firstName, String lastName, String productName, Double productPrice){
-        JPAQuery<Purchase> jpaQuery = new JPAQuery<>(em);
+   /*     JPAQuery<Purchase> jpaQuery = new JPAQuery<>(em);
 
         if(firstName == null && lastName == null && productName == null && productPrice == null){
             return (List<Purchase>) purchaseRepository.findAll();
@@ -73,7 +65,21 @@ public class PurchaseServiceImpl implements PurchaseService {
                 .where(qPurchase.firstName.eq(firstName).and(qPurchase.lastName.eq(lastName))
                         .and(qPurchase.productName.eq(productName)).and(qPurchase.productPrice.eq(productPrice)))
                 .fetch();
+        */
+        PurchaseRecordFilter purchaseRecordFilter = new PurchaseRecordFilter();
 
+        if(firstName != null && !firstName.isEmpty())
+            purchaseRecordFilter.setFirstName(firstName);
+        if(lastName != null && !lastName.isEmpty())
+            purchaseRecordFilter.setLastName(lastName);
+        if(productName != null && !productName.isEmpty())
+            purchaseRecordFilter.setProductName(productName);
+        if(productPrice != null && !productPrice.isNaN())
+            purchaseRecordFilter.setProductPrice(productPrice);
+
+        List<Purchase> purchases = (List<Purchase>) purchaseRepository.findAll(purchaseRecordFilter.buildQuery());
+
+        return purchases;
     }
 
 }
