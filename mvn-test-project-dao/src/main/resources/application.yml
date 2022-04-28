@@ -1,0 +1,20 @@
+logging:
+  level:
+    it.adt.comparison: INFO
+    it.adt.comparison.service: WARN
+
+my-properties:
+  name: Pino
+
+# DATASOURCE
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+  # JPA - Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.default_schema: shop_test
