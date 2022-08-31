@@ -13,6 +13,7 @@
         <module>mvn-test-project-boot</module>
         <module>mvn-test-project-aop</module>
         <module>mvn-test-project-common</module>
+        <module>mvn-test-project-purchase-producer</module>
     </modules>
     <name>mvn-test-project</name>
   <url>http://maven.apache.org</url>
