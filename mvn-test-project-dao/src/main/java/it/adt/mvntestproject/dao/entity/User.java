@@ -1,14 +1,17 @@
 package it.adt.mvntestproject.dao.entity;
 
+
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_user;
+    private Long id;
+    @Column(name="id_user",unique = true, nullable = false)
+    private String id_user;
     @Column(name= "first_name", nullable = false)
     private String firstName;
     @Column(name = "last_name", nullable = false)
@@ -16,23 +19,23 @@ public class User {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Purchase> purchases;
 
-    public User(){}
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Purchase> purchases;
 
-    public User(int id_user, String firstName, String lastName, String email){
-        this.id_user = id_user;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public Long getId() {
+        return id;
     }
 
-    public int getId_user() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getId_user() {
         return id_user;
     }
 
-    public void setId_user(int id_user) {
+    public void setId_user(String id_user) {
         this.id_user = id_user;
     }
 
@@ -59,4 +62,12 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
+    }
+
 }

@@ -2,7 +2,8 @@ package it.adt.mvntestproject.rest;
 
 import it.adt.mvntestproject.dao.entity.Purchase;
 import it.adt.mvntestproject.dto.PurchaseDto;
-import it.adt.mvntestproject.service.PurchaseService;
+import it.adt.mvntestproject.dto.PurchaseSave;
+import it.adt.mvntestproject.service.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,13 @@ public class PurchaseController {
 
 
     @PostMapping(value = "/purchase", produces = { MediaType.APPLICATION_JSON_VALUE})
-    public Purchase create(@RequestBody PurchaseDto purchaseDto){
-        return this.purchaseService.create(purchaseDto);
+    public PurchaseDto create(@RequestBody PurchaseSave purchaseSave){
+        return this.purchaseService.create(purchaseSave);
+    }
+
+    @GetMapping(value = "/purchase/find-all-purchases", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<PurchaseDto> getPurchase(){
+        return purchaseService.getPurchases();
     }
 
     @GetMapping(value = "/purchase/filtered-list", produces = { MediaType.APPLICATION_JSON_VALUE})

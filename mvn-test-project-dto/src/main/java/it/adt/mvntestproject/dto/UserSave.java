@@ -4,25 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
-public class UserDto {
-
-    @JsonProperty("id_user")
-    private String id_user;
+public class UserSave {
     @JsonProperty("first_name")
     private String firstName;
     @JsonProperty("last_name")
     private String lastName;
     @JsonProperty("email")
     private String email;
-
-
-    public String getId_user() {
-        return id_user;
-    }
-
-    public void setId_user(String id_user) {
-        this.id_user = id_user;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -54,18 +42,17 @@ public class UserDto {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        UserDto userDto = (UserDto) o;
-        return Objects.equals(this.id_user, userDto.id_user) &&
-                Objects.equals(this.firstName, userDto.firstName) &&
-                Objects.equals(this.lastName, userDto.lastName) &&
-                Objects.equals(this.email, userDto.email);
+        UserSave userSave = (UserSave) o;
+        return Objects.equals(this.firstName, userSave.firstName) &&
+                Objects.equals(this.lastName, userSave.lastName) &&
+                Objects.equals(this.email, userSave.email);
     }
 
     @Override public int hashCode() {
-        return Objects.hash(id_user, firstName, lastName, email);
+        return Objects.hash(firstName, lastName, email);
     }
 
     @Override public String toString() {
-        return "UserDto{" + "id_user='" + id_user + '\'' + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\'' + '}';
+        return "UserSave{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\'' + '}';
     }
 }

@@ -1,27 +1,38 @@
 package it.adt.mvntestproject.dto;
 
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
+import java.util.Objects;
 
 public class PurchaseDto {
-    private String firstNameUser;
-    private String lastNameUser;
-    private String productName;
-    private double productPrice;
-    private Date purchaseDate;
-    private double purchasePrice;
-    private String receiptCode;
-    private int idUser;
 
-    public PurchaseDto(String firstNameUser, String lastNameUser, String productName, double productPrice,
-            Date purchaseDate, double purchasePrice, String receiptCode, int idUser) {
-        this.firstNameUser = firstNameUser;
-        this.lastNameUser = lastNameUser;
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.purchaseDate = purchaseDate;
-        this.purchasePrice = purchasePrice;
-        this.receiptCode = receiptCode;
-        this.idUser = idUser;
+    @JsonProperty("id_purchase")
+    private String idPurchase;
+    @JsonProperty("first_name")
+    private String firstNameUser;
+    @JsonProperty("last_name")
+    private String lastNameUser;
+    @JsonProperty("product_name")
+    private String productName;
+    @JsonProperty("product_price")
+    private double productPrice;
+    @JsonProperty("purchase_date")
+    private Date purchaseDate;
+    @JsonProperty("purchase_price")
+    private double purchasePrice;
+    @JsonProperty("receipt_code")
+    private String receiptCode;
+    @JsonProperty("user")
+    private UserDto userDto;
+
+    public String getIdPurchase() {
+        return idPurchase;
+    }
+
+    public void setIdPurchase(String idPurchase) {
+        this.idPurchase = idPurchase;
     }
 
     public String getFirstNameUser() {
@@ -80,11 +91,39 @@ public class PurchaseDto {
         this.receiptCode = receiptCode;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public UserDto getUserDto() {
+        return userDto;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setUserDto(UserDto userDto) {
+        this.userDto = userDto;
+    }
+
+    @Override public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PurchaseDto purchaseDto = (PurchaseDto) o;
+        return Objects.equals(this.productPrice, purchaseDto.productPrice)
+                && Objects.equals(this.purchasePrice, purchaseDto.purchasePrice)  &&
+                Objects.equals(this.idPurchase, purchaseDto.idPurchase)
+                && Objects.equals(this.firstNameUser, purchaseDto.firstNameUser) &&
+                Objects.equals(this.lastNameUser, purchaseDto.lastNameUser) &&
+                Objects.equals(this.productName, purchaseDto.productName) &&
+                Objects.equals(this.purchaseDate, purchaseDto.purchaseDate) &&
+                Objects.equals(this.receiptCode, purchaseDto.receiptCode) &&
+                Objects.equals(this.userDto, purchaseDto.userDto);
+    }
+
+    @Override public int hashCode() {
+        return Objects.hash(idPurchase, firstNameUser, lastNameUser, productName, productPrice, purchaseDate, purchasePrice, receiptCode, userDto);
+    }
+
+    @Override public String toString() {
+        return "PurchaseDto{" + "idPurchase='" + idPurchase + '\'' + ", firstNameUser='" + firstNameUser + '\'' + ", lastNameUser='" + lastNameUser + '\'' + ", productName='"
+                + productName + '\'' + ", productPrice=" + productPrice + ", purchaseDate=" + purchaseDate + ", purchasePrice=" + purchasePrice + ", receiptCode='" + receiptCode
+                + '\'' + ", userDto='" + userDto + '\'' + '}';
     }
 }

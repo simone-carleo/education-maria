@@ -1,8 +1,8 @@
 package it.adt.mvntestproject;
 
 
-import it.adt.mvntestproject.service.ComparisonService;
-import it.adt.mvntestproject.service.impl.ComparisonServiceImpl;
+import it.adt.mvntestproject.service.service.ComparisonService;
+import it.adt.mvntestproject.service.service.impl.ComparisonServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 @Import({ComparisonServiceImpl.class })
 public class ComparisonApplication {
     final static Logger logger = LoggerFactory.getLogger(ComparisonApplication.class);
@@ -27,6 +28,7 @@ public class ComparisonApplication {
 
     @Value("${my-properties.name}")
     private String name;
+
 
     public static void main(String[] args ) {
         SpringApplication.run(ComparisonApplication.class, args);

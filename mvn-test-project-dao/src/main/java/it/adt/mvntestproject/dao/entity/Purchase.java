@@ -1,16 +1,25 @@
 package it.adt.mvntestproject.dao.entity;
 
+
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "purchase")
 public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+    @Column(name = "id_purchase",unique = true, nullable = false)
+    private String idPurchase;
+    @Column(name = "first_name", nullable = false)
     private String firstName;
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+    @Column(name = "product_name", nullable = false)
     private String productName;
+    @Column(name = "product_price", nullable = false)
     private double productPrice;
 
     @Column(name = "purchase_price",nullable = false)
@@ -21,25 +30,23 @@ public class Purchase {
     private String receiptCode;
 
     @ManyToOne
-    @JoinColumn(name = "id_user", nullable = false)
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
     private User user;
 
-    public Purchase(){}
-
-    public Purchase(int id, String firstName, String lastName, String productName, double productPrice) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.productName = productName;
-        this.productPrice = productPrice;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getIdPurchase() {
+        return idPurchase;
+    }
+
+    public void setIdPurchase(String idPurchase) {
+        this.idPurchase = idPurchase;
     }
 
     public String getFirstName() {
@@ -105,4 +112,6 @@ public class Purchase {
     public void setUser(User user) {
         this.user = user;
     }
+
+
 }
