@@ -66,6 +66,11 @@
               <artifactId>mvn-test-project-common</artifactId>
               <version>1.0-SNAPSHOT</version>
           </dependency>
+          <dependency>
+              <groupId>it.adt</groupId>
+              <artifactId>mvn-test-project-purchase-producer</artifactId>
+              <version>1.0-SNAPSHOT</version>
+          </dependency>
       </dependencies>
   </dependencyManagement>
   <dependencies>

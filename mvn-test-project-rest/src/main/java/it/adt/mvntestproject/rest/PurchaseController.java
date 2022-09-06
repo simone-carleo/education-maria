@@ -36,6 +36,6 @@ public class PurchaseController {
 
 
         return purchaseService.getFilteredList(firstName, lastName, productName, productPrice);
-
     }
+
 }

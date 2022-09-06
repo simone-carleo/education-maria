@@ -2,9 +2,12 @@ logging:
   level:
     it.adt.comparison: INFO
     it.adt.comparison.service: WARN
-
+server:
+  port: 8080
 my-properties:
   name: Pino
+  cron:
+    expression: 0/5 * * * * ?
 
 # DATASOURCE
 spring:
@@ -12,9 +15,22 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: root
+  enable:
+    scheduling: true
+
   # JPA - Hibernate
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate.default_schema: shop_test
+  # KAFKA
+  kafka:
+    bootstrap-servers: "localhost:9092"
+    consumer:
+      group-id: "EdgeApplication"
+education-maria:
+  kafka:
+    topic:
+      publish-message:
+        output: purchase.v1

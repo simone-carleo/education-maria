@@ -22,10 +22,6 @@
         </dependency>
         <dependency>
             <groupId>it.adt</groupId>
-            <artifactId>mvn-test-project-service</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>it.adt</groupId>
             <artifactId>mvn-test-project-common</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka -->

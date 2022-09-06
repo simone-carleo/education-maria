@@ -19,6 +19,10 @@
             <groupId>it.adt</groupId>
             <artifactId>mvn-test-project-dao</artifactId>
         </dependency>
+        <dependency>
+            <groupId>it.adt</groupId>
+            <artifactId>mvn-test-project-purchase-producer</artifactId>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
