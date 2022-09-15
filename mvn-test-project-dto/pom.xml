@@ -11,6 +11,13 @@
 
     <artifactId>mvn-test-project-dto</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>it.adt</groupId>
+            <artifactId>mvn-test-project-common</artifactId>
+        </dependency>
+    </dependencies>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

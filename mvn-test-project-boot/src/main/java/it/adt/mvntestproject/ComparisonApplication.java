@@ -18,7 +18,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @Import({ComparisonServiceImpl.class })
 public class ComparisonApplication {
-    final static Logger logger = LoggerFactory.getLogger(ComparisonApplication.class);
+    final Logger logger = LoggerFactory.getLogger(ComparisonApplication.class);
     @Autowired
     private ComparisonService comparisonService;
 

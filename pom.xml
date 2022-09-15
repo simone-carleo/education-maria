@@ -13,7 +13,6 @@
         <module>mvn-test-project-boot</module>
         <module>mvn-test-project-aop</module>
         <module>mvn-test-project-common</module>
-        <module>mvn-test-project-purchase-producer</module>
     </modules>
     <name>mvn-test-project</name>
   <url>http://maven.apache.org</url>
@@ -66,11 +65,6 @@
               <artifactId>mvn-test-project-common</artifactId>
               <version>1.0-SNAPSHOT</version>
           </dependency>
-          <dependency>
-              <groupId>it.adt</groupId>
-              <artifactId>mvn-test-project-purchase-producer</artifactId>
-              <version>1.0-SNAPSHOT</version>
-          </dependency>
       </dependencies>
   </dependencyManagement>
   <dependencies>
@@ -104,6 +98,22 @@
           <groupId>org.mapstruct</groupId>
           <artifactId>mapstruct</artifactId>
           <version>1.5.1.Final</version>
+      </dependency>
+      <dependency>
+          <groupId>javax.validation</groupId>
+          <artifactId>validation-api</artifactId>
+          <version>2.0.1.Final</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+          <version>3.12.0</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-collections4</artifactId>
+          <version>4.1</version>
       </dependency>
 
   </dependencies>

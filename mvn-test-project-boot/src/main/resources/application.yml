@@ -1,7 +1,8 @@
 logging:
   level:
-    it.adt.comparison: INFO
-    it.adt.comparison.service: WARN
+    it.adt: DEBUG
+    #it.adt.comparison: DEBUG
+    #it.adt.comparison.service: WARN
 server:
   port: 8080
 my-properties:
@@ -29,8 +30,31 @@ spring:
     bootstrap-servers: "localhost:9092"
     consumer:
       group-id: "EdgeApplication"
+    security:
+      enabled: false
+    custom:
+      properties:
+        sasl:
+          mechanism: "PLAIN"
+          jaas:
+            class: "org.apache.kafka.common.security.plain.PlainLoginModule"
+            user: "admin"
+            password: "12345"
+        trust:
+          store:
+            location: "location of truststore"
+            password: "trust store password"
+        ssl:
+          endpoint:
+            identification:
+              algorithm: ""
+        security:
+          protocol: "SASL_PLAINTEXT"
+
 education-maria:
   kafka:
     topic:
       publish-message:
         output: purchase.v1
+      listen-message:
+        input: purchase.v1

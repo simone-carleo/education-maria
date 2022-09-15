@@ -1,10 +1,10 @@
 package it.adt.mvntestproject.service.service.impl;
 
+import it.adt.mvntestproject.common.exception.EntityNotFoundException;
 import it.adt.mvntestproject.dao.entity.Purchase;
 import it.adt.mvntestproject.dto.PurchaseDto;
 import it.adt.mvntestproject.dao.filter.PurchaseRecordFilter;
 import it.adt.mvntestproject.dao.repository.PurchaseRepository;
-import it.adt.mvntestproject.dao.repository.UserRepository;
 import it.adt.mvntestproject.dto.PurchaseSave;
 import it.adt.mvntestproject.service.mappers.PurchaseEntityMapper;
 import it.adt.mvntestproject.service.service.IUserService;
@@ -30,7 +30,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     private PurchaseEntityMapper purchaseEntityMapper;
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public PurchaseDto create(PurchaseSave purchaseSave){
+    public PurchaseDto create(PurchaseSave purchaseSave) throws EntityNotFoundException {
 //        Purchase purchase = new Purchase();
 //        purchase.setFirstName(purchaseDto.getFirstNameUser());
 //        purchase.setLastName(purchaseDto.getLastNameUser());
@@ -55,7 +55,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public List<Purchase> getFilteredList(String firstName, String lastName, String productName, Double productPrice){
+    public List<PurchaseDto> getFilteredList(String firstName, String lastName, String productName, Double productPrice){
    /*     JPAQuery<Purchase> jpaQuery = new JPAQuery<>(em);
 
         if(firstName == null && lastName == null && productName == null && productPrice == null){
@@ -99,7 +99,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 
         List<Purchase> purchases = (List<Purchase>) purchaseRepository.findAll(purchaseRecordFilter.buildQuery());
 
-        return purchases;
+//        return purchases;
+        return purchaseEntityMapper.mapPurchaseListToPurchaseDtoList(purchases);
     }
 
 }

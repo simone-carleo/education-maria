@@ -1,6 +1,6 @@
 package it.adt.mvntestproject.rest;
 
-import it.adt.mvntestproject.dao.entity.Purchase;
+import it.adt.mvntestproject.common.exception.EntityNotFoundException;
 import it.adt.mvntestproject.dto.PurchaseDto;
 import it.adt.mvntestproject.dto.PurchaseSave;
 import it.adt.mvntestproject.service.service.PurchaseService;
@@ -18,7 +18,7 @@ public class PurchaseController {
 
 
     @PostMapping(value = "/purchase", produces = { MediaType.APPLICATION_JSON_VALUE})
-    public PurchaseDto create(@RequestBody PurchaseSave purchaseSave){
+    public PurchaseDto create(@RequestBody PurchaseSave purchaseSave) throws EntityNotFoundException {
         return this.purchaseService.create(purchaseSave);
     }
 
@@ -28,7 +28,7 @@ public class PurchaseController {
     }
 
     @GetMapping(value = "/purchase/filtered-list", produces = { MediaType.APPLICATION_JSON_VALUE})
-    public List<Purchase> filteredList(
+    public List<PurchaseDto> filteredList(
             @RequestParam(value = "firstName", required = false) String firstName,
             @RequestParam(value = "lastName", required = false) String lastName,
             @RequestParam(value = "productName", required = false) String productName,

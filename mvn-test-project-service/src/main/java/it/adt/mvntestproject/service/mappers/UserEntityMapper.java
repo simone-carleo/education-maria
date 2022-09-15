@@ -10,11 +10,13 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface UserEntityMapper {
+    @Mapping(source = "idUser", target = "id_user")
     UserDto mapUserEntityToUserDto(User user);
 
-    @Mapping(target = "id_user", expression = "java(java.util.UUID.randomUUID().toString())")
+    @Mapping(target = "idUser", expression = "java(java.util.UUID.randomUUID().toString())")
     User mapUserSaveToNewUserEntity(UserSave userSave);
 
+    @Mapping(source = "idUser", target = "id_user")
     List<UserDto> mapUserEntityListToUserDtoList(List<User> userList);
 
 }
