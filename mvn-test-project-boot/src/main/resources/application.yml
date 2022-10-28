@@ -7,54 +7,20 @@ server:
   port: 8080
 my-properties:
   name: Pino
-  cron:
-    expression: 0/5 * * * * ?
 
 # DATASOURCE
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: "jdbc:postgresql://shoptest-postgresql:5432/postgres?currentSchema=shop_test"
+    #url: "jdbc:postgresql://localhost:5432/postgres?currentSchema=shop_test"
     username: postgres
     password: root
-  enable:
-    scheduling: true
-
+    driver-class-name: "org.postgresql.Driver"
   # JPA - Hibernate
   jpa:
     hibernate:
       ddl-auto: update
+    database: POSTGRESQL
+    database-platform: "org.hibernate.dialect.PostgreSQL95Dialect"
     properties:
       hibernate.default_schema: shop_test
-  # KAFKA
-  kafka:
-    bootstrap-servers: "localhost:9092"
-    consumer:
-      group-id: "EdgeApplication"
-    security:
-      enabled: false
-    custom:
-      properties:
-        sasl:
-          mechanism: "PLAIN"
-          jaas:
-            class: "org.apache.kafka.common.security.plain.PlainLoginModule"
-            user: "admin"
-            password: "12345"
-        trust:
-          store:
-            location: "location of truststore"
-            password: "trust store password"
-        ssl:
-          endpoint:
-            identification:
-              algorithm: ""
-        security:
-          protocol: "SASL_PLAINTEXT"
-
-education-maria:
-  kafka:
-    topic:
-      publish-message:
-        output: purchase.v1
-      listen-message:
-        input: purchase.v1

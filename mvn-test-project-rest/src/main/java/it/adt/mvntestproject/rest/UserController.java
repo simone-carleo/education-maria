@@ -25,6 +25,7 @@ public class UserController {
 
     @GetMapping(value = "/user/find-all-users", produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<UserDto> getUsers(){
+        System.out.println("Entrato");
         return iUserService.getAllUsers();
     }
 
